@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
     const svg = d3.select('svg');
 
     const globe = svg.append('image')
-      .attr('xlink:href', '../assets/globe.png')
+      .attr('xlink:href', 'assets/globe.png')
       .attr('width', height)
       .attr('height', height);
 

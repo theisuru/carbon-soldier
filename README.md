@@ -42,4 +42,4 @@ npm install @types/d3 --save-dev
 ng build --prod
 
 ## build for github
-ng build --prod --base-href=” https://theisuru.github.io/carbon-soldier/”
+ng build --prod --base-href="https://theisuru.github.io/carbon-soldier/"
