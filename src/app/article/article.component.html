@@ -1,0 +1,9 @@
+<h2>{{article.title | uppercase}}</h2>
+<div><span>id: {{article.id}}</span></div>
+<div><label>title:</label>
+  <input [(ngModel)]="article.title" placeholder="title"/>
+</div>
+<div>date: {{article.date}}</div>
+<div>body: {{article.body}}</div>
+
+<mat-slider min="1" max="100" step="1" value="1"></mat-slider>
