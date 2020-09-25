@@ -5,3 +5,41 @@ app-about {
 html body {
   background-color: black;
 }
+
+.about-container {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.artwork {
+  margin: 0 auto;
+  //float: left;
+  //width: 60%;
+  width: 850px;
+  //background-color: #b9b9b9;
+}
+
+.description {
+  //float: left;
+  position: absolute;
+  z-index: 5;
+  //margin: 0 auto;
+  top: 150px;
+  left: 50%;
+  width: 240px;
+  margin-left: -120px;
+  //margin-top: 20em;
+  //background-color: #b98748;
+  font-family: "ShareTechMono-Regular", serif;
+  text-align: center;
+}
+
+.portrait {
+  width: 240px;
+  height: 115px;
+}
+
+.footnote {
+  width: 100%;
+  float: left;
+}

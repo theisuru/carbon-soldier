@@ -37,7 +37,7 @@ export class AboutComponent implements OnInit {
     const gear3Center = [0, (-radius * 7 - annulusWidth - 2 * toothRadius)];
 
     // const svg = d3.select(DOM.svg(width, height));
-    const svg = d3.select('div').append('svg').attr('width', width).attr('height', height);
+    const svg = d3.select('.artwork').append('svg').attr('width', width).attr('height', height);
 
     const frame = svg.append('g')
       .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')')

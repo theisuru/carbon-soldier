@@ -1,7 +1,37 @@
-html {
-
+.carbon-container {
+  margin: 0 auto;
+  width: 70%;
+  background-color: #ececec;
+  padding: 10px;
 }
 
-html body {
-  background: transparent;
+.carbon-title {
+  padding: 10px;
+  font-size: 20px;
+  font-family: "Audiowide-Regular", serif;
+}
+
+.carbon-subtitle {
+  padding: 10px;
+  font-size: 15px;
+  font-family: "Audiowide-Regular", serif;
+}
+
+.carbon-img-container {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.carbon-img {
+  display: block;
+  margin: 0 auto;
+  //height: 100%;
+  //object-fit: cover;
+}
+
+.carbon-content {
+  padding: 10px;
+  font-family: "ShareTechMono-Regular", serif;
+  font-size: 15px;
 }

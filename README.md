@@ -28,19 +28,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 
-ng new angular-tour-of-heroes --style=scss
-cd angular-tour-of-heroes
-ng serve --open
-ng generate component heroes
-ng generate service hero
-ng generate module app-routing --flat --module=app
 
-ng add @angular/material
-npm install d3 --save
-npm install @types/d3 --save-dev
-
-ng build --prod
 
 ## build for github
-ng build --prod --base-href="https://theisuru.github.io/carbon-soldier/"
-ng build --prod --base-href="https://carbonsoldier.org"
+* Build project `ng build --prod --base-href="https://carbonsoldier.org"`
+* Copy CNAME file to docs directory
+* Before setting a custom domain `ng build --prod --base-href="https://theisuru.github.io/carbon-soldier/"`

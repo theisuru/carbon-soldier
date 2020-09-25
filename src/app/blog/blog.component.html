@@ -1,13 +1,40 @@
-<button mat-button [matMenuTriggerFor] = "menu">File</button>
-<mat-menu #menu = "matMenu">
-   <button mat-menu-item>New</button>
-   <button mat-menu-item>Open</button>
-   <button mat-menu-item [matMenuTriggerFor] = "recent">Recent</button>
-</mat-menu>
-<mat-menu #recent = "matMenu">
-   <button mat-menu-item>File 1</button>
-   <button mat-menu-item>File 2</button>
-</mat-menu>
+<!--<button mat-button [matMenuTriggerFor] = "menu">File</button>-->
+<!--<mat-menu #menu = "matMenu">-->
+<!--   <button mat-menu-item>New</button>-->
+<!--   <button mat-menu-item>Open</button>-->
+<!--   <button mat-menu-item [matMenuTriggerFor] = "recent">Recent</button>-->
+<!--</mat-menu>-->
+<!--<mat-menu #recent = "matMenu">-->
+<!--   <button mat-menu-item>File 1</button>-->
+<!--   <button mat-menu-item>File 2</button>-->
+<!--</mat-menu>-->
 
-<p>blog works!</p>
-<app-article></app-article>
+<!--<app-article></app-article>-->
+
+<div class="blog-container">
+  <div class="blog-content">
+    <mat-tab-group [selectedIndex]="0">
+<!--      <mat-tab label="Java"><div class="article-list"></div></mat-tab>-->
+<!--      <mat-tab label="Python"><div class="article-list"></div></mat-tab>-->
+      <mat-tab label="Software">
+        <div class="article-list">
+          <div *ngFor="let article of articles">
+            <div class="article" *ngIf="article.category == 'SOFTWARE'">
+              <a routerLink="/article" [queryParams]="{id: article.id}">{{article.title}}</a>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="General">
+        <div class="article-list">
+          <div *ngFor="let article of articles">
+            <div class="article" *ngIf="article.category == 'GENERAL'">
+              <a routerLink="/article" [queryParams]="{id: article.id}">{{article.title}}</a>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+
