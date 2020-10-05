@@ -46,23 +46,23 @@ export class AboutComponent implements OnInit {
 
     const path = frame.selectAll('g')
       .data([
-        {fill: '#c6dbef', teeth: 208, radius: -radius * 12 + 2 * -annulusWidth + 4 * -toothRadius , origin: [0, 0], annulus: true},
-        {fill: '#6baed6', teeth: 32, radius: radius * 2, origin: [0, 0], annulus: false},
-        {fill: '#c6dbef', teeth: 80, radius: -radius * 5, origin: [gear1Center[0], gear1Center[1]], annulus: true},
-        {fill: '#6baed6', teeth: 16, radius: radius, origin: [gear1Center[0], gear1Center[1]], annulus: false},
-        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear1Center[0], gear1Center[1] + -radius * 3]},
-        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear1Center[0] + -radius * 3 * x, gear1Center[1] + -radius * 3 * y], annulus: false},
-        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear1Center[0] + radius * 3 * x, gear1Center[1] + -radius * 3 * y], annulus: false},
-        {fill: '#c6dbef', teeth: 80, radius: -radius * 5, origin: [gear2Center[0], gear2Center[1]], annulus: true},
-        {fill: '#6baed6', teeth: 16, radius: radius, origin: [gear2Center[0], gear2Center[1]], annulus: false},
-        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear2Center[0], gear2Center[1] + -radius * 3]},
-        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear2Center[0] + -radius * 3 * x, gear2Center[1] + -radius * 3 * y], annulus: false},
-        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear2Center[0] + radius * 3 * x, gear2Center[1] + -radius * 3 * y], annulus: false},
-        {fill: '#c6dbef', teeth: 80, radius: -radius * 5, origin: [gear3Center[0], gear3Center[1]], annulus: true},
-        {fill: '#6baed6', teeth: 16, radius: radius, origin: [gear3Center[0], gear3Center[1]], annulus: false},
-        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear3Center[0], gear3Center[1] + -radius * 3]},
-        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear3Center[0] + -radius * 3 * x, gear3Center[1] + -radius * 3 * y], annulus: false},
-        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear3Center[0] + radius * 3 * x, gear3Center[1] + -radius * 3 * y], annulus: false}
+        {fill: '#c6dbef', teeth: 208, radius: -radius * 12 + 2 * -annulusWidth + 4 * -toothRadius , origin: [0, 0], annulus: true, speedup: -3},
+        {fill: '#6baed6', teeth: 32, radius: radius * 2, origin: [0, 0], annulus: false, speedup: -3},
+        {fill: '#c6dbef', teeth: 80, radius: -radius * 5, origin: [gear1Center[0], gear1Center[1]], annulus: true, speedup: 0},
+        {fill: '#6baed6', teeth: 16, radius: radius, origin: [gear1Center[0], gear1Center[1]], annulus: false, speedup: 0},
+        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear1Center[0], gear1Center[1] + -radius * 3], annulus: false, speedup: 0},
+        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear1Center[0] + -radius * 3 * x, gear1Center[1] + -radius * 3 * y], annulus: false, speedup: 0},
+        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear1Center[0] + radius * 3 * x, gear1Center[1] + -radius * 3 * y], annulus: false, speedup: 0},
+        {fill: '#c6dbef', teeth: 80, radius: -radius * 5, origin: [gear2Center[0], gear2Center[1]], annulus: true, speedup: 0},
+        {fill: '#6baed6', teeth: 16, radius: radius, origin: [gear2Center[0], gear2Center[1]], annulus: false, speedup: 0},
+        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear2Center[0], gear2Center[1] + -radius * 3], annulus: false, speedup: 0},
+        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear2Center[0] + -radius * 3 * x, gear2Center[1] + -radius * 3 * y], annulus: false, speedup: 0},
+        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear2Center[0] + radius * 3 * x, gear2Center[1] + -radius * 3 * y], annulus: false, speedup: 0},
+        {fill: '#c6dbef', teeth: 80, radius: -radius * 5, origin: [gear3Center[0], gear3Center[1]], annulus: true, speedup: 0},
+        {fill: '#6baed6', teeth: 16, radius: radius, origin: [gear3Center[0], gear3Center[1]], annulus: false, speedup: 0},
+        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear3Center[0], gear3Center[1] + -radius * 3], annulus: false, speedup: 0},
+        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear3Center[0] + -radius * 3 * x, gear3Center[1] + -radius * 3 * y], annulus: false, speedup: 0},
+        {fill: '#9ecae1', teeth: 32, radius: -radius * 2, origin: [gear3Center[0] + radius * 3 * x, gear3Center[1] + -radius * 3 * y], annulus: false, speedup: 0}
       ])
       .join('g')
       .attr('transform', d => `translate(${d.origin})`)
@@ -95,7 +95,7 @@ export class AboutComponent implements OnInit {
       r3 = r2 + toothRadius * 3;
     }
 
-    const da = Math.PI / n;
+    let da = Math.PI / n;
     let a0 = -Math.PI / 2 + (annulus ? Math.PI / n : 0);
     const path = ['M', r0 * Math.cos(a0), ',', r0 * Math.sin(a0)];
     let i = -1;
@@ -114,7 +114,8 @@ export class AboutComponent implements OnInit {
       r2 = Math.abs(radius) + annulusWidth + 2 * toothRadius;
       r0 = r2 - toothRadius;
       r1 = r2 + toothRadius;
-      // n = n + 5;
+      n = n + 5;
+      da = Math.PI / n;
 
       a0 = -Math.PI / 2;
       path.push('M', r0 * Math.cos(a0), ',', r0 * Math.sin(a0));
@@ -138,9 +139,10 @@ export class AboutComponent implements OnInit {
 
   private drawInCanvas(speed, start, path, frame, svg): void {
     const angle = (Date.now() - start) * speed;
-    const transform = d => `rotate(${angle / d.radius})`;
+    const transform = d => `rotate(${angle / (d.radius + d.speedup)})`;
+    const transformHalf = d => `rotate(${angle * 0.5 / d.radius})`;
     path.attr('transform', transform);
-    frame.attr('transform', transform);
+    frame.attr('transform', transformHalf);
     svg.node();
   }
 
