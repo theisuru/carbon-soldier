@@ -1,0 +1,37 @@
+<ol>
+  <li>Level 0: </li>
+</ol>
+
+<hr>
+
+<h3>Solr Core</h3>
+Solr core consists of configuration files, Lucene indexes and transaction logs
+solr.xml -
+schema.xml - main config file for text analysis and indexing a specific core
+solrconfig.xml - main config file for a specific core
+
+http://localhost:8983/solr/collection1/select?
+q=iPod&
+fq=manu:Belkin&
+sort=price asc&
+fl=name,price,features,score&
+df=text&
+Default search
+wt=xml&
+field is text.
+start=0&rows=10
+
+<h4>Unique key</h4>
+<h4>Stored field</h4>
+<h4>Indexed field</h4>
+
+multivalued fields
+Dynamic fields
+
+
+<ol>
+  <li><a href="https://www.martinfowler.com/articles/richardsonMaturityModel.html">Martin Fowler</a></li>
+  <li><a href="https://www.crummy.com/writing/speaking/2008-QCon/act3.html">Leonard Richardson</a></li>
+  <li><a href="https://apisyouwonthate.com/blog/rest-and-hypermedia-in-2019">APIs you won't hate</a></li>
+  <li><a href="https://cloud.google.com/apis/design/resources">Google API design guide</a></li>
+</ol>

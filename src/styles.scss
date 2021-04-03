@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~highlight.js/styles/agate.css';
 
 html, body {
   height: 100%;
@@ -26,3 +27,15 @@ body {
   font-family: ShareTechMono-Regular;
   src: url(assets/font/ShareTechMono-Regular.ttf) format("opentype");
 }
+
+@font-face {
+  font-family: JetBrainsMono-Regular;
+  src: url(assets/font/JetBrainsMono-Regular.ttf) format("opentype");
+}
+
+.code {
+  font-family: "JetBrainsMono-Regular", monospace;
+  font-size: 14px;
+  color: #8c8c8c
+}
+

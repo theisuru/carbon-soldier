@@ -9,12 +9,14 @@ import {ArticleComponent} from './article/article.component';
 import {AppRoutingModule} from './app-routing.module';
 import {CarbonComponent} from './carbon/carbon.component';
 import {BlogComponent} from './blog/blog.component';
-import {MatButtonModule, MatMenuModule, MatSliderModule} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSliderModule } from '@angular/material/slider';
 import {AboutComponent} from './about/about.component';
 import {HomeComponent} from './home/home.component';
 import {MatTabsModule} from '@angular/material/tabs';
-import {CommonModule} from '@angular/common';
-import { TestComponent } from './test/test.component';
+import {TestComponent} from './test/test.component';
+import {HIGHLIGHT_OPTIONS, HighlightModule} from 'ngx-highlightjs';
 
 @NgModule({
   declarations: [
@@ -26,15 +28,22 @@ import { TestComponent } from './test/test.component';
     HomeComponent,
     TestComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        AppRoutingModule,
-        HttpClientModule,
-        MatSliderModule, MatMenuModule, MatButtonModule, MatTabsModule
-    ],
-  providers: [],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    MatSliderModule, MatMenuModule, MatButtonModule, MatTabsModule,
+    HighlightModule
+  ],
+  providers: [
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        fullLibraryLoader: () => import('highlight.js'),
+      }
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

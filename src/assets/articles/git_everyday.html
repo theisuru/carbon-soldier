@@ -1,0 +1,93 @@
+<ol>
+  <li>Temporarily switch to a different commit</li>
+  <li>Hard delete unpublished commits</li>
+  <li>Undo published commits with new commits</li>
+</ol>
+
+<hr>
+
+<h3>Git: made a mistake, reverting back to an older commit</h3>
+<div>
+  <h4>Temporarily switch to a different commit</h4>
+  If you just want to temporarily go back to an earlier commit and comeback to HEAD, you can easily checkout the desired commit using commit hash
+  If you want to temporarily go back to it, fool around, then come back to where you are, all you have to do is check out the desired commit:
+
+  <pre><code>
+    git checkout 0d1d7fc32
+    # extract file from another commit
+     git checkout [commit] -- [filename]
+  </code></pre>
+
+  This will detach you from the HEAD.
+  If you want to start making changes from this commit, you can try to create a branch from there.
+
+  <pre><code>
+    git checkout -b old-state 0d1d7fc32
+    # To go back to where you were (back to HEAD), simply checkout the branch
+    git checkout dev
+    # If you made changes while in old branch, you could reset to throw them away; you could stash, checkout, stash pop to take them with you; you could commit them to a branch there if you want a branch there
+  </code></pre>
+
+  <h4>Hard delete unpublished commits</h4>
+  If you just want to delete everything you have since then
+
+  <pre><code>
+    # go back to previous commit but keep all the changes afterwords uncommitted
+    git reset 0d1d7fc32
+  </code></pre>
+
+  <pre><code>
+  # This will destroy any local modifications.
+  # Don't do it if you have uncommitted work you want to keep.
+  git reset --hard 0d1d7fc32
+  </code></pre>
+
+  <pre><code>
+  # Alternatively, if there's work to keep:
+  git stash
+  git reset --hard 0d1d7fc32
+  git stash pop
+  </code></pre>
+
+  <h4>Undo published commits with new commits</h4>
+  On the other hand, if you've published the work, you probably don't want to reset the branch, since that's effectively rewriting history.
+  In that case, you could indeed revert the commits. With Git, revert has a very specific meaning: create a commit with the reverse patch to cancel it out.
+  This way you don't rewrite any history.
+
+  <pre><code>
+  # This will create three separate revert commits:
+  git revert a867b4af 25eee4ca 0766c053
+  </code></pre>
+
+  <pre><code>
+  # It also takes ranges. This will revert the last two commits:
+  git revert HEAD~2..HEAD
+  </code></pre>
+
+  <pre><code>
+  #Similarly, you can revert a range of commits using commit hashes (non inclusive of first hash):
+  git revert 0d1d7fc..a867b4a
+  </code></pre>
+
+  <pre><code>
+  # Reverting a merge commit
+  git revert -m 1 [merge_commit_sha]
+  </code></pre>
+
+  <pre><code>
+  # To get just one, you could use `rebase -i` to squash them afterwards
+  # Or, you could do it manually (be sure to do this at top level of the repo)
+  # get your index and work tree into the desired state, without changing HEAD:
+  git checkout 0d1d7fc32
+
+  # Then commit. Be sure and write a good message describing what you just did
+  git commit
+  </code></pre>
+  The git-revert manpage actually covers a lot of this in its description. Another useful link is this git-scm.com section discussing git-revert.
+
+  If you decide you didn't want to revert after all, you can revert the revert (as described here) or reset back to before the revert (see the previous section).
+</div>
+
+<ol>
+  <li><a href="https://stackoverflow.com/questions/4114095/how-do-i-revert-a-git-repository-to-a-previous-commit">stackoverflow</a></li>
+</ol>
