@@ -47,13 +47,34 @@ export const MOCK_ARTICLE_INDEX = {
     category: 'SOFTWARE',
     date: '09/09/2020',
     body: 'assets/articles/rest.html'
+  },
+  frontend_maven: {
+    id: 'frontend_maven',
+    title: 'Spring-Angular integration with frontend Maven plugin',
+    category: 'SOFTWARE',
+    date: '05/10/2020',
+    body: 'assets/articles/frontend_maven.html'
+  },
+  git: {
+    id: 'git',
+    title: 'Git Everyday',
+    category: 'SOFTWARE',
+    date: '17/12/2020',
+    body: 'assets/articles/git_everyday.html'
+  },
+  docker: {
+    id: 'docker',
+    title: 'Docker CheatSheet',
+    category: 'SOFTWARE',
+    date: '03/04/2021',
+    body: 'assets/articles/docker.html'
   }
 };
 
 
 export const GENERAL_ARTICLES = ['The 7 Habits of Highly Effective People', 'The Monk Who Sold His Ferrari'];
 
-export const SOFTWARE_ARTICLES = ['Neo4j', 'JSON Schema', 'Regex', 'Solr', 'REST'];
+export const SOFTWARE_ARTICLES = ['Neo4j', 'JSON Schema', 'Regex', 'Solr', 'REST', 'git', 'docker'];
 
 // ontology
 // json

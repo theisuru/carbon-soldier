@@ -1,0 +1,184 @@
+<ol>
+  <li>Dockerfile</li>
+  <li>Build and run a Docker image</li>
+  <li>Push Docker image to remote repository</li>
+  <li>Running Docker container commands</li>
+  <li>Docker Compose</li>
+  <li>Misc</li>
+</ol>
+
+<hr>
+
+<h4 id="dockerfile">Dockerfile</h4>
+  <pre><code>
+  FROM node:12-alpine
+  WORKDIR /app
+  COPY . .
+  RUN yarn install --production
+  CMD ["node", "src/index.js"]
+  </code></pre>
+<code>FROM</code> - select an image. <code>alphine</code> is the most common and recommended image<br>
+<code>WORKDIR</code> - working directory. Always define this from absolute path <br>
+<code>COPY</code> - copy files/directories <br>
+<code>RUN</code> - run commands <br>
+<code>CMD</code> - execute commands <br>
+<code>ENTRYPOINT</code> - start your service <br>
+
+<h4>Build and run a Docker image</h4>
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td><code>docker build -t [image-name] [directory]</code></td>
+    <td>build docker image from dockerfile <br>-t tag for the image</td>
+    <td><code>docker build -t MyImage .</code></td>
+  </tr>
+  <tr>
+    <td><code>docker run -dp 3000:3000 [image]</code></td>
+    <td>run docker image. <br>-d run the container in detached mode <br>-p  map host port to the container port</td>
+    <td><code>docker run -dp 3000:3000 getting-started</code></td>
+  </tr>
+  <tr>
+    <td><code>docker ps</code></td>
+    <td></td>
+    <td><code>docker ps</code></td>
+  </tr>
+  <tr>
+    <td><code>docker stop [container-id]</code></td>
+    <td>stop running docker container</td>
+    <td><code>docker stop 21f714a706a6</code></td>
+  </tr>
+  <tr>
+    <td><code>docker rm -f [container-id]</code></td>
+    <td>remove the docker container <br> -f forcefully remove even if running</td>
+    <td><code></code></td>
+  </tr>
+</table>
+
+
+<h4>Push Docker image to remote repository</h4>
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td><code>docker login [registry] -u [username] .</code></td>
+    <td>login to a Docker registry. Registry name defaults to hub.docker.com</td>
+    <td>docker login quay.io -u MyUsername</td>
+  </tr>
+  <tr>
+    <td><code>docker tag [image-id] [registry]/[namespace]/[repository]:[tag]</code></td>
+    <td>tag an image before pushing it to a registry. If not provided, registry name defaults to hub.docker.com</td>
+    <td><code>docker tag MyImage quay.io/MyUsername/MyImage:MyTag</code>
+    </td>
+  </tr>
+  <tr>
+    <td><code>docker push [registry]/[namespace]/[repository]:[tag]</code></td>
+    <td>push the tagged image to a registry. Registry name defaults to hub.docker.com</td>
+    <td><code>docker push quay.io/MyUsername/MyImage:MyTag</code></td>
+  </tr>
+</table>
+
+<h4>Running Docker container commands</h4>
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td><code>docker exec [container-id] cat /data.txt</code></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>docker volume create todo-db</code></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>docker run -dp 3000:3000 -v todo-db:/etc/todos getting-started</code></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>docker logs -f [container-id]</code></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>docker run -dp 3000:3000 -w /app -v "$(pwd):/app" node:12-alpine sh -c "yarn install && yarn run dev"</code></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>docker network create todo-app</code></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>docker run -d \
+    --network todo-app --network-alias mysql \
+    -v todo-mysql-data:/var/lib/mysql \
+    -e MYSQL_ROOT_PASSWORD=secret \
+    -e MYSQL_DATABASE=todos \
+    mysql:5.7</code></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<h4>Docker Compose</h4>
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td><code>docker-compose up -d</code></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>docker-compose logs -f [app]</code></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>docker-compose down --volume</code></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<h4>Misc commands</h4>
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td><code>docker scan [getting-started]</code></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>docker image history --no-trunc [getting-started]</code></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<br><hr>
+
+<h3>References</h3>
+<ul>
+  <li><a href="https://docs.docker.com/get-started/">Docker get started</a></li>
+</ul>

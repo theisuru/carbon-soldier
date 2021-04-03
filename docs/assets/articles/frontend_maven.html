@@ -1,0 +1,36 @@
+<ol>
+  <li>Level 0: </li>
+  <li>Level 1: </li>
+  <li>Level 2: </li>
+  <li>Level 3: </li>
+</ol>
+
+<hr>
+
+<h3>Spring Angular integration with Maven frontend plugin</h3>
+
+<p>
+Normally you would pass run build as a configuration argument to npm goal as a last step of your maven front end plugin.
+Instead if you <span class="code">run build --prod</span> it will build your angular application in production mode as if you ran `ng build --prod`.
+You can keep two profiles for default build and production build to easily integrate this in your CI/CD pipeline.
+Furthermore, you can keep multiple profiles for multiple environments if you are willing do modifications
+to your `angular.json` file and add new files to `$PROJECT/src/environments` directory.
+user `mvn clean install -Dprod` to build the production code
+</p>
+
+<div class="code">
+  <pre><code>
+    function myFunction() {
+      document.getElementById("demo1").innerHTML = "Hello there!";
+      document.getElementById("demo2").innerHTML = "How are you?";
+    }
+  </code></pre>
+</div>
+
+
+<ol>
+  <li><a href="https://www.martinfowler.com/articles/richardsonMaturityModel.html">Martin Fowler</a></li>
+  <li><a href="https://www.crummy.com/writing/speaking/2008-QCon/act3.html">Leonard Richardson</a></li>
+  <li><a href="https://apisyouwonthate.com/blog/rest-and-hypermedia-in-2019">APIs you won't hate</a></li>
+</ol>
+
